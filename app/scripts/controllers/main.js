@@ -14,9 +14,11 @@ angular.module('moodboardApp')
       'AngularJS',
       'Karma'
     ];
-        $scope.newEntry = {};
+        $scope.newEntry = {
+            comment: 'new comment'
+        };
         firebase.entries.$bind($scope,'entries');
         $scope.add =function(){
-            firebase.entries.$add({'comment' : $scope.newEntry.comment});
+            firebase.entries.$add($scope.newEntry);
         };
   }]);
