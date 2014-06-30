@@ -1,7 +1,6 @@
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.next
-release.properties
+node_modules
+dist
+.tmp
+.sass-cache
+bower_components
 .idea
-*.iml
