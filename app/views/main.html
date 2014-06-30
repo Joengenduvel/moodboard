@@ -1,3 +1,18 @@
 <div class="jumbotron">
-
+<table>
+    <thead>
+    <tr><th>entry</th><th>comment</th></tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="entry in entries">
+        <td>{{$index + 1}}</td>
+        <td>{{entry.comment}}</td>
+    </tr>
+    <tr>
+        <td>new</td>
+        <td><input type="text" ng-bind="newEntry.comment"></td>
+    </tr>
+    </tbody>
+</table>
+<input type="button" ng-click="add()">
 </div>

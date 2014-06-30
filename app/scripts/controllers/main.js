@@ -8,10 +8,15 @@
  * Controller of the moodboardApp
  */
 angular.module('moodboardApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', ['$scope', 'Firebase', function ($scope, firebase) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+        $scope.newEntry = {};
+        firebase.entries.$bind($scope,'entries');
+        $scope.add =function(){
+            firebase.entries.$add({'comment' : $scope.newEntry.comment});
+        };
+  }]);
