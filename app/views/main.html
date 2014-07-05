@@ -11,8 +11,17 @@
     <tr>
         <td>new</td>
         <td><input type="text" ng-model="newEntry.comment"></td>
+        <td>
+            <select>
+                <option value="4">Happy</option>
+                <option value="3">Satisfied</option>
+                <option value="2">Meh</option>
+                <option value="1">Disappointed</option>
+                <option value="0">Sad</option>
+            </select>
+        </td>
     </tr>
     </tbody>
 </table>
-<input type="button" ng-click="add()">
+<input type="button" ng-click="add()" value="Add">
 </div>

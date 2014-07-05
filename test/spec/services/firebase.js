@@ -2,17 +2,20 @@
 
 describe('Service: firebase', function () {
 
-  // load the service's module
-  beforeEach(module('moodboardApp'));
+
+    // load the firebase's module
+    beforeEach(module('firebase'));
+    // load the service's module
+    beforeEach(module('moodboardApp'));
 
   // instantiate service
-  var firebase;
-  beforeEach(inject(function (_firebase_) {
-    firebase = _firebase_;
+  var firebaseService;
+  beforeEach(inject(function (_FirebaseService_) {
+    firebaseService = _FirebaseService_;
   }));
 
-  it('should do something', function () {
-    expect(!!firebase).toBe(true);
+  it('should define mood entries', function () {
+    expect(!!firebaseService.entries).toBe(true);
   });
 
 });

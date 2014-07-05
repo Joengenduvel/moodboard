@@ -13,11 +13,12 @@
     "angular-touch": "1.2.16",
     "angular-route": "1.2.16",
     "firebase": "~1.0.17",
-    "angularfire": "~1.0.17"
+    "angularfire": "~0.7.1"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",
-    "angular-scenario": "1.2.16"
+    "angular-scenario": "1.2.16",
+    "jasmine": "~2.0.0"
   },
   "appPath": "app"
 }

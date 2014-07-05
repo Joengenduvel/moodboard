@@ -2,8 +2,10 @@
 
 describe('Controller: AboutCtrl', function () {
 
-  // load the controller's module
-  beforeEach(module('moodboardApp'));
+    // load the firebase's module
+    beforeEach(module('firebase'));
+    // load the controller's module
+    beforeEach(module('moodboardApp'));
 
   var AboutCtrl,
     scope;

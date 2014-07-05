@@ -8,7 +8,7 @@
  * Controller of the moodboardApp
  */
 angular.module('moodboardApp')
-  .controller('MainCtrl', ['$scope', 'Firebase', function ($scope, firebase) {
+  .controller('MainCtrl', ['$scope', 'FirebaseService', function ($scope, firebase) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
