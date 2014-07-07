@@ -1,27 +1,31 @@
 <div class="jumbotron">
-<table>
-    <thead>
-    <tr><th>entry</th><th>comment</th></tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="entry in entries">
-        <td>{{$index + 1}}</td>
-        <td>{{entry.comment}}</td>
-    </tr>
-    <tr>
-        <td>new</td>
-        <td><input type="text" ng-model="newEntry.comment"></td>
-        <td>
-            <select ng-model="newEntry.happiness" ng-options="level.label for level in happinessLevels">
-                <option value="4">Happy</option>
-                <option value="3">Satisfied</option>
-                <option value="2" selected="selected">Meh</option>
-                <option value="1">Disappointed</option>
-                <option value="0">Sad</option>
-            </select>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<input type="button" ng-click="add()" value="Add">
+    <div>
+        <figure xchart style="width: 400px; height: 300px;" id="myChart" data="graph.data" type="graph.type" opts="graph.opts"></figure>
+    </div>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>entry</th>
+                <th>comment</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="entry in entries" ng-class="{selected: tmp}">
+                <td>{{$index + 1}}</td>
+                <td>{{entry.comment}}</td>
+            </tr>
+            <tr class="selected">
+                <td>new</td>
+                <td><input type="text" ng-model="newEntry.comment"></td>
+                <td>
+                    <select ng-model="newEntry.happiness" ng-options="level.label for level in happinessLevels">
+                    </select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="button" ng-click="add()" value="Add">
+        <input type="checkbox" ng-model="tmp">
+    </div>
 </div>

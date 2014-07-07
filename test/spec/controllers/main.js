@@ -39,6 +39,9 @@ describe('Controller: MainCtrl', function () {
                 },
                 $add: function(entry){
                     addedEntry = entry
+                },
+                $getIndex: function(){
+                    return [1,2]
                 }
             }
         };
@@ -87,6 +90,10 @@ describe('Controller: MainCtrl', function () {
             expect(addedEntry.date.getDay()).toBe(today.getDay());
             expect(addedEntry.date.getMonth()).toBe(today.getMonth());
             expect(addedEntry.date.getFullYear()).toBe(today.getFullYear());
+        });
+
+        it('should set the index', function(){
+            expect(addedEntry.index).toBe(2);
         });
     });
 });
