@@ -20,6 +20,7 @@ angular.module('moodboardApp')
             comment: 'new comment',
             happiness: $scope.happinessLevels[2]
         };
+        $scope.highlightedIndex = -1;
         firebase.entries.$bind($scope, 'entries');
         $scope.add = function () {
             $scope.newEntry.date = new Date();
@@ -78,12 +79,14 @@ angular.module('moodboardApp')
                 "dataFormatX": function (x) { return d3.time.format('%Y-%m-%d').parse(x); },
                 "tickFormatX": function (x) { return d3.time.format('%A')(x); },
                 "mouseover": function (d, i) {
-                    $scope.tmp = true;
-                    var id = $scope.entries.$getIndex()[i];
-                   $scope.entries[id].highlighted = true;
+                    $scope.$apply(function() {
+                        $scope.highlightedIndex = d.index;
+                    });
                 },
                 "mouseout": function (x) {
-                    $scope.tmp= false;
+                    $scope.$apply(function() {
+                        $scope.highlightedIndex = -1;
+                    });
                 }
             }
         };

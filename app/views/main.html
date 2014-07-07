@@ -11,21 +11,25 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="entry in entries" ng-class="{selected: tmp}">
-                <td>{{$index + 1}}</td>
+            <tr ng-repeat="entry in entries" ng-class="{selected: entry.index === highlightedIndex}">
+                <td>{{entry.index}}</td>
                 <td>{{entry.comment}}</td>
+                <td>{{entry.happiness.label}}</td>
+                <td>{{entry.date | date: shortDate}}</td>
             </tr>
-            <tr class="selected">
+            <tr>
                 <td>new</td>
                 <td><input type="text" ng-model="newEntry.comment"></td>
                 <td>
                     <select ng-model="newEntry.happiness" ng-options="level.label for level in happinessLevels">
                     </select>
                 </td>
+                <td>
+                    <input type="button" ng-click="add()" value="Add">
+                </td>
             </tr>
             </tbody>
         </table>
-        <input type="button" ng-click="add()" value="Add">
-        <input type="checkbox" ng-model="tmp">
+        <input type="text" ng-model="highlightedIndex">
     </div>
 </div>
