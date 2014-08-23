@@ -8,7 +8,7 @@
  * Service in the moodboardApp.
  */
 angular.module('moodboardApp')
-  .service('GraphData', ['$filter', function ($filter) {
+  .service('graphDataService', ['$filter', function ($filter) {
     return {
         convert: function(data){
             var convertedData = [];
