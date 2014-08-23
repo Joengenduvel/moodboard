@@ -11,5 +11,5 @@ angular.module('moodboardApp')
   .service('GraphData', function Graphdata() {
     return {
 
-    }
+    };
   });

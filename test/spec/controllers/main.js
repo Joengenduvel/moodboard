@@ -36,12 +36,20 @@ describe('Controller: MainCtrl', function () {
                             happiness: 1
                         }
                     ];
+                    return {
+                        then: function(){
+
+                        }
+                    }
                 },
                 $add: function(entry){
                     addedEntry = entry
                 },
                 $getIndex: function(){
                     return [1,2]
+                },
+                $on: function(event, callback){
+                    callback();
                 }
             }
         };
