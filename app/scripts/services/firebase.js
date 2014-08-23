@@ -12,6 +12,6 @@ angular.module('moodboardApp')
     .service('FirebaseService', ['$firebase', function ($firebase) {
         var entries = new Firebase('moodboard.firebaseio.com/entries');
         return {
-            entries: $firebase(entries)
+            entries: $firebase(entries).$asArray()
         };
     }]);

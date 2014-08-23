@@ -21,16 +21,12 @@ angular.module('moodboardApp')
             happiness: $scope.happinessLevels[2]
         };
         $scope.highlightedIndex = -1;
-        firebase.entries.$bind($scope, 'entries').then(function(){
-            //all data loaded.
-        });
-        firebase.entries.$on("loaded", function() {
-            console.log("Initial data received!");
 
+        firebase.entries.$loaded().then(function() {
+            console.log("Initial data received!");
+            $scope.entries = firebase.entries;
         });
-        firebase.entries.$on("change", function() {
-            console.log("A remote change was applied locally!");
-        });
+
         $scope.add = function () {
             $scope.newEntry.date = new Date();
             $scope.newEntry.index = firebase.entries.$getIndex().length;
