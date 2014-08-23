@@ -25,7 +25,7 @@ module.exports = function(config) {
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
         'bower_components/firebase/firebase.js',
-        'bower_components/angularfire/angularfire.js',
+        'bower_components/angularfire/dist/angularfire.js',
         'bower_components/ng-xCharts/xcharts.min.js',
         'bower_components/ng-xCharts/ng-xCharts.js',
       'app/scripts/**/*.js',

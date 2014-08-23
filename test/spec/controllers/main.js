@@ -21,28 +21,32 @@ describe('Controller: MainCtrl', function () {
         today = new Date();
         firebaseService = {
             entries: {
-                $bind: function (objectToBind, nameOfObject) {
-                    objectToBind[nameOfObject] = [
-                        {
-                            index: 0,
-                            comment: 'bla',
-                            date: today,
-                            happiness: 0
-                        },
-                        {
-                            index: 1,
-                            comment: 'bla1',
-                            date: today,
-                            happiness: 1
-                        }
-                    ];
+                0: {
+                    index: 0,
+                    comment: 'bla',
+                    date: today,
+                    happiness: 0
                 },
-                $add: function(entry){
+                1: {
+                    index: 1,
+                    comment: 'bla1',
+                    date: today,
+                    happiness: 1
+                },
+                $loaded: function () {
+                    return {
+                        then: function ( succes) {
+                            succes();
+                        }
+                    }
+                },
+                $add: function (entry) {
                     addedEntry = entry
                 },
-                $getIndex: function(){
-                    return [1,2]
-                }
+                $getIndex: function () {
+                    return [1, 2]
+                },
+                length: 2
             }
         };
 
@@ -60,11 +64,11 @@ describe('Controller: MainCtrl', function () {
         });
     }));
 
-    it('should define a list of mood option', function(){
-       expect(scope.happinessLevels).toEqual(happinessLevels);
+    it('should define a list of mood option', function () {
+        expect(scope.happinessLevels).toEqual(happinessLevels);
     });
 
-    it('should set the default happiness to Meh', function(){
+    it('should set the default happiness to Meh', function () {
         expect(scope.newEntry.happiness).toEqual(happinessLevels[2]);
     });
 
@@ -72,27 +76,27 @@ describe('Controller: MainCtrl', function () {
         expect(scope.entries.length).toBe(2);
     });
 
-    describe('when adding an item', function(){
+    describe('when adding an item', function () {
 
-        beforeEach(function(){
+        beforeEach(function () {
             scope.add();
         });
 
-        it('should set the comment', function(){
+        it('should set the comment', function () {
             expect(addedEntry.comment).toBe(scope.newEntry.comment);
         });
 
-        it('should set the happiness', function(){
+        it('should set the happiness', function () {
             expect(addedEntry.happiness).toEqual(happinessLevels[2]);
         });
 
-        it('should set the date', function(){
+        it('should set the date', function () {
             expect(addedEntry.date.getDay()).toBe(today.getDay());
             expect(addedEntry.date.getMonth()).toBe(today.getMonth());
             expect(addedEntry.date.getFullYear()).toBe(today.getFullYear());
         });
 
-        it('should set the index', function(){
+        it('should set the index', function () {
             expect(addedEntry.index).toBe(2);
         });
     });
