@@ -21,7 +21,16 @@ angular.module('moodboardApp')
             happiness: $scope.happinessLevels[2]
         };
         $scope.highlightedIndex = -1;
-        firebase.entries.$bind($scope, 'entries');
+        firebase.entries.$bind($scope, 'entries').then(function(){
+            //all data loaded.
+        });
+        firebase.entries.$on("loaded", function() {
+            console.log("Initial data received!");
+
+        });
+        firebase.entries.$on("change", function() {
+            console.log("A remote change was applied locally!");
+        });
         $scope.add = function () {
             $scope.newEntry.date = new Date();
             $scope.newEntry.index = firebase.entries.$getIndex().length;
@@ -78,12 +87,12 @@ angular.module('moodboardApp')
             opts: {
                 "dataFormatX": function (x) { return d3.time.format('%Y-%m-%d').parse(x); },
                 "tickFormatX": function (x) { return d3.time.format('%A')(x); },
-                "mouseover": function (d, i) {
+                "mouseover": function (d) {
                     $scope.$apply(function() {
                         $scope.highlightedIndex = d.index;
                     });
                 },
-                "mouseout": function (x) {
+                "mouseout": function () {
                     $scope.$apply(function() {
                         $scope.highlightedIndex = -1;
                     });

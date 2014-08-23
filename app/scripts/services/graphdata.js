@@ -9,5 +9,7 @@
  */
 angular.module('moodboardApp')
   .service('GraphData', function Graphdata() {
-    // AngularJS will instantiate a singleton by calling "new" on this function
+    return {
+
+    }
   });

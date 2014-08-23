@@ -14,5 +14,4 @@ describe('Service: graphData', function () {
   it('should do something', function () {
     expect(!!graphData).toBe(true);
   });
-
 });
